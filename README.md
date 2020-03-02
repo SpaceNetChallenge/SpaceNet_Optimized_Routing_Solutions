@@ -2,7 +2,7 @@
 <a href="https://spacenet.ai"><img src="_data/sn_logo.png" width="350" alt="SpaceNet LLC"></a>
 </p>
 <h1 align="center">SpaceNet Challenge Round 5: Road Networks and Optimized Routing</h1>
-<h2 align="center">Competitor Solutions</h2>
+<h2 align="center">Competitor solutions</h2>
 <br>
 
 ## Summary
