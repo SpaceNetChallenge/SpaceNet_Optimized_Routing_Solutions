@@ -11,7 +11,8 @@ The five subdirectories in this repository comprise the code for the winning sol
 
 Model weights are located in the SpaceNet s3 bucket:
 
-```aws s3 ls s3://spacenet-dataset/spacenet-model-weights/spacenet-5/
+```
+aws s3 ls s3://spacenet-dataset/spacenet-model-weights/spacenet-5/
     PRE baseline/
     PRE cannab/
     PRE ikibardin/
