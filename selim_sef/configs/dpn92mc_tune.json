@@ -1,0 +1,57 @@
+{
+  "network": "dpn_unet_mc",
+  "encoder": "dpn92_mc",
+  "fp16": true,
+  "data_multiplier": 8,
+  "num_classes": 12,
+  "image_type": "PS-MS",
+  "optimizer": {
+        "batch_size": 4,
+        "type": "Adam",
+        "clip": 3,
+        "learning_rate": 0.0001,
+        "schedule": {
+            "type": "step",
+            "mode": "epoch",
+            "epochs": 14,
+            "params": {
+              "steps": [[0,0.00002],[2, 0.00001],[4,0.000005],[8,0.000003]]
+            }
+        }
+    },
+    "input": {
+      "crop_height": 512,
+      "crop_width": 512,
+      "normalize": {"mean": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ], "std": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}
+    },
+   "mask_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.5,
+        "focal": 2
+      },
+      "per_image": false
+    }
+  },
+  "speed_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.12,
+        "focal": 2
+      },
+      "per_image": false
+    }
+  },
+  "junction_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.1,
+        "focal": 1
+      },
+      "per_image": false
+    }
+  }
+}

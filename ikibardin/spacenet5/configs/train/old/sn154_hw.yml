@@ -1,0 +1,113 @@
+data_params:
+  batch_size: 12
+  num_workers: 32
+  steps_per_epoch: 200
+  fold: 0
+  activation: sigmoid
+  augs: heavy
+  augs_params:
+    crop_size: 512
+
+    pad_height: 1344
+    pad_width: 1344
+
+  folds_csv: tables/folds_v3.csv
+
+
+train_params:
+  name: sn154_v1_0
+  model_name: selim_sn154_unet
+  loss: LossMixture
+  loss_params:
+    bce_weight: 0.3
+    dice_weight: 1.0
+  metrics: [IoU]
+  num_classes: 1
+  checkpoint_saver:
+    metric_name: IoU
+    mode: max
+    num_checkpoints: 3
+    save_optim: 0
+  early_stopping:
+    metric_name: IoU
+    mode: max
+
+
+
+stages:
+  #  stage1:
+  #    freeze_encoder: 1
+  #    optimizer: Adam
+  #    optimizer_params:
+  #      lr: 0.0001
+  #    scheduler: ReduceLROnPlateau
+  #    scheduler_params:
+  #      patience: 1
+  #      factor: 0.1
+  #    epochs: 20
+  #    early_stopping:
+  #      patience: 3
+  #    data_params:
+  #      batch_size: 36
+
+#  stage2:
+  #    optimizer: Adam
+  #    optimizer_params:
+  #      lr: 0.0001
+  #    scheduler: ReduceLROnPlateau
+  #    scheduler_params:
+  #      patience: 1
+  #      factor: 0.5
+  #    epochs: 100
+  #    early_stopping:
+  #      patience: 4
+  #
+  #  stage3:
+  #    freeze_encoder: 1
+  #    optimizer: Adam
+  #    optimizer_params:
+  #      lr: 0.0001
+  #    scheduler: ReduceLROnPlateau
+  #    scheduler_params:
+  #      patience: 0
+  #      factor: 0.1
+  #    epochs: 15
+  #    early_stopping:
+  #      patience: 2
+  #    data_params:
+  #      batch_size: 8
+  #      augs: light
+
+
+  stage4:
+    optimizer: Adam
+    optimizer_params:
+      lr: 0.0001
+    scheduler: ReduceLROnPlateau
+    scheduler_params:
+      patience: 1
+      factor: 0.5
+    epochs: 100
+    early_stopping:
+      patience: 4
+    data_params:
+      batch_size: 4
+      augs: heavy
+      augs_params:
+        crop_size: 896
+
+        pad_height: 1344
+        pad_width: 1344
+
+  stage3:
+    pass: pass
+
+
+
+predict_params:
+  test_csv:
+  batch_size: 8
+  num_checkpoints: 1
+  metric_mode: max
+  part: [val]
+

@@ -1,0 +1,13 @@
+docker start example:
+
+docker run --gpus all -v /data:/data:ro -v /data/wdata:/wdata --ipc=host -it cannab
+
+Model weights will be downloaded on docker start.
+
+test.sh takes ~3 hours, but should be faster with good ssd drive. I've tested on p3.8xlarge - main delays come from disk i/o.
+
+train.sh takes ~2 days, but also tested and should be in time.
+
+To reproduce train need to use all 6 cities from SN3 and SN4 (use 6 argumets for train.sh)!
+
+All logs saved to /wdata/logs folder

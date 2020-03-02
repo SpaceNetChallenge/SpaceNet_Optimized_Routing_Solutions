@@ -1,0 +1,50 @@
+data_params:
+  num_workers: 16
+  steps_per_epoch: 300
+  fold: 0
+  activation: sigmoid
+  folds_csv: tables/folds_v4.csv
+
+  batch_size: 4
+  augs: hsv_no_cutout_harder
+  augs_params:
+    crop_size: 1024
+
+    pad_height: 1344
+    pad_width: 1344
+
+
+
+train_params:
+  name: rn50_fpn_FIXED_0
+  model_name: rn50_fpn
+  loss: LossMixture
+  loss_params:
+    focal_weight: 2.0
+    dice_weight: 1.0
+  metrics: [IoU]
+  num_classes: 1
+  checkpoint_saver:
+    metric_name: loss
+    mode: min
+    num_checkpoints: 3
+    save_optim: 0
+  early_stopping:
+    metric_name: loss
+    mode: min
+
+
+
+stages:
+  stage4:
+    pass: pass
+
+
+predict_params:
+  test_csv: tables/test.csv
+  batch_size: 3
+  num_checkpoints: 3
+  metric_mode: min
+  part: [test]
+  TTA: D4
+

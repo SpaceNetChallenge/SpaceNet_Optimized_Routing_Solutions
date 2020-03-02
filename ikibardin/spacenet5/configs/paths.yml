@@ -1,0 +1,13 @@
+dumps:
+  path: '/wdata/learning_dumps/spacenet5'
+  weights: 'weights'
+  hard: 'hard_samples'
+  logs: 'logs'
+  predictions: 'predictions'
+  samples: 'samples'
+
+dataset:
+  path: '/wdata/cresi_data'
+  images_dir: '8bit/PS-RGB'
+  masks_dir: 'cresi_train/train_mask_binned_mc'
+  test_dir: '/wdata/cresi_data/8bit/public_test/PS-RGB'

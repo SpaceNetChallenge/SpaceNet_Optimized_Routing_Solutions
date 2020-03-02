@@ -1,0 +1,57 @@
+{
+  "network": "irv_unet_mc",
+  "encoder": "inceptionresnetv2mc",
+  "fp16": false,
+  "data_multiplier": 8,
+  "num_classes": 12,
+  "image_type": "PS-MS",
+  "optimizer": {
+        "batch_size": 6,
+        "type": "Adam",
+        "clip": 3,
+        "learning_rate": 0.0001,
+        "schedule": {
+            "type": "step",
+            "mode": "epoch",
+            "epochs": 50,
+            "params": {
+              "steps": [[0,0.0005],[2, 0.0001],[10,0.00005],[20,0.00003],[30,0.00001],[40,0.000005]]
+            }
+        }
+    },
+    "input": {
+      "crop_height": 448,
+      "crop_width": 448,
+      "normalize": {"mean": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5 ], "std": [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]}
+    },
+   "mask_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.5,
+        "focal": 2
+      },
+      "per_image": false
+    }
+  },
+  "speed_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.12,
+        "focal": 2
+      },
+      "per_image": false
+    }
+  },
+  "junction_loss": {
+    "type": "ComboLoss",
+    "params": {
+      "weights": {
+        "dice": 0.1,
+        "focal": 1
+      },
+      "per_image": false
+    }
+  }
+}
