@@ -26,6 +26,6 @@ Performance of the algorithms on the SpaceNet 5 final test set is as follows
 
 ![alt text](_data/apls_rate_plot.png)
 
---------
+---------
 
 Questions about SpaceNet? Check out our website at [https://spacenet.ai](https://spacenet.ai).
