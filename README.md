@@ -21,7 +21,8 @@ aws s3 ls s3://spacenet-dataset/spacenet-model-weights/spacenet-5/
     PRE xd_xd/
 ```
 
-Performance of the algorithms on the SpaceNet 5 final test set is as follows
+Performance of the algorithms on the SpaceNet 5 final test set is shown below:
+
 ![alt text](_data/sn5_table.png)
 
 ![alt text](_data/apls_rate_plot.png)
