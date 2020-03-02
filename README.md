@@ -2,8 +2,10 @@
 <a href="https://spacenet.ai"><img src="sn_logo.png" width="350" alt="SpaceNet LLC"></a>
 </p>
 <h1 align="center">SpaceNet Challenge Round 5: Road Networks and Optimized Routing</h1>
-<h2 align="center">Competitor Solutions</h2>
+<h2 align="center">Competitor solutions</h2>
 <br>
+
+## Summary
 
 The five subdirectories in this repository comprise the code for the winning solutions of SpaceNet 5: Road Networks and Optimized Routing hosted by TopCoder. Each subdirectory contains the competitors' written descriptions of their solution to the challenge. See the blog post on CosmiQ Works' blog [The DownlinQ](https://medium.com/p/fd02e00b826c) for an additional summary.  Baseline code can be found [here](https://github.com/CosmiQ/cresi).
 
